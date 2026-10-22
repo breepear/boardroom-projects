@@ -1,9 +1,9 @@
 # Source material that stays local (raw photography, briefs, working files)
-Photos/
-Moodboard/
-Brief/
-Logo/
-Claude outputs/
+/Photos/
+/Moodboard/
+/Brief/
+/Logo/
+/Claude outputs/
 
 # macOS
 .DS_Store
