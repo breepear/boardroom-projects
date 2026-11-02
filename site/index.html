@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boardroom Projects</title>
   <meta name="description" content="Boardroom Projects. Residential design in Phoenix, Arizona. Older homes, contextual new builds, real materials.">
   <meta name="theme-color" content="#F5F2ED">
+  <link rel="icon" type="image/png" href="logo/favicon.png">
+  <link rel="preload" as="image" href="images/ss-house.jpg" imagesrcset="images/ss-house-m.jpg 1000w, images/ss-house.jpg 2000w" imagesizes="100vw">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261021e">
+  <link rel="stylesheet" href="styles.css?v=20261102b">
 </head>
 <body>
 
@@ -18,13 +21,15 @@
   <div class="hero-media">
     <img class="hero-img" src="images/ss-house.jpg" srcset="images/ss-house-m.jpg 1000w, images/ss-house.jpg 2000w" sizes="100vw" alt="" fetchpriority="high">
   </div>
-  <div class="hero-veil"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-fade" aria-hidden="true"></div>
+  <span class="hero-corner tl label">Residential design</span>
+  <span class="hero-corner tr label">Phoenix, Arizona</span>
   <div class="hero-logo">
-    <img src="logo/lockup-white.png" alt="Boardroom Projects" width="1800" height="699">
-  </div>
-  <div class="hero-foot">
-    <span class="hero-tag">Residential design</span>
-    <span class="hero-tag">Phoenix, Arizona</span>
+    <div class="hero-brand">
+      <img src="logo/lockup-white.png" alt="Boardroom Projects" width="1800" height="699">
+      <h1 class="hero-tagline">From the drawing board to real life.</h1>
+    </div>
   </div>
   <div class="hero-cue" aria-hidden="true"><span></span></div>
 </header>
@@ -52,19 +57,19 @@
         <figure><img src="images/hs-pergola-m.jpg" alt="Picnic table under a vine-covered pergola, State Ave" loading="lazy"></figure>
         <figure><img src="images/ss-flag-m.jpg" alt="Brick chimney with a flag, State Ave" loading="lazy"></figure>
       </div>
-      <p class="strip-caption"><span>Eight houses, one thread</span><span class="strip-count" id="stripCount">01 / 11</span></p>
+      <p class="strip-caption label"><span>Details from eight houses</span><span class="strip-count" id="stripCount">01 / 11</span></p>
     </div>
   </section>
 
   <!-- ======================= PROJECT 01 ======================= -->
   <section class="project" id="p1">
     <header class="project-head" data-reveal>
-      <span class="project-n">01</span>
-      <h2>State Ave</h2>
-      <p>North Central Phoenix. New build in brick, built to look like it was always there.</p>
+      <div class="ph-meta label"><span class="ph-n">01 / 06</span><span>North Central Phoenix</span><span>New build</span></div>
+      <h2 class="ph-title" data-mask>State Ave</h2>
+      <p class="ph-note">Brick, built to look like it was always on the block.</p>
     </header>
     <div class="spread spread-a">
-      <figure class="f1" data-reveal data-parallax="0.06"><img src="images/ss-entry.jpg" srcset="images/ss-entry-m.jpg 1000w, images/ss-entry.jpg 2000w" sizes="(max-width: 800px) 100vw, 56vw" alt="Red brick entry with a black steel door" loading="lazy"></figure>
+      <figure class="has-cap f1" data-reveal data-parallax="0.06"><div class="frame"><img src="images/ss-entry.jpg" srcset="images/ss-entry-m.jpg 1000w, images/ss-entry.jpg 2000w" sizes="(max-width: 800px) 100vw, 56vw" alt="Red brick entry with a black steel door" loading="lazy"></div><figcaption>Entry · brick and black steel</figcaption></figure>
       <figure class="f2" data-reveal data-parallax="-0.08"><img src="images/ss-bar-m.jpg" alt="Dark bar with brick wall and brass shelves" loading="lazy"></figure>
       <figure class="f3" data-reveal data-parallax="0.12"><img src="images/ss-pool-m.jpg" alt="Pool with brick chimney behind" loading="lazy"></figure>
       <figure class="f4" data-reveal data-parallax="-0.04"><img src="images/ss-den-m.jpg" alt="Navy paneled den with round table" loading="lazy"></figure>
@@ -74,12 +79,12 @@
   <!-- ======================= PROJECT 02 ======================= -->
   <section class="project" id="p2">
     <header class="project-head" data-reveal>
-      <span class="project-n">02</span>
-      <h2>Flagstaff</h2>
-      <p>Forest Highlands. A cabin in the pines. Stone base, board-and-batten, a porch that does most of the living.</p>
+      <div class="ph-meta label"><span class="ph-n">02 / 06</span><span>Forest Highlands, Flagstaff</span><span>New build</span></div>
+      <h2 class="ph-title" data-mask>Flagstaff</h2>
+      <p class="ph-note">A cabin in the pines. Stone base, board-and-batten, a porch that does most of the living.</p>
     </header>
     <div class="spread spread-b">
-      <figure class="f1" data-reveal data-parallax="0.05"><img src="images/fl-front.jpg" srcset="images/fl-front-m.jpg 1000w, images/fl-front.jpg 2000w" sizes="100vw" alt="Charcoal cabin with a deep front porch among ponderosa pines" loading="lazy"></figure>
+      <figure class="has-cap f1" data-reveal data-parallax="0.05"><div class="frame"><img src="images/fl-front.jpg" srcset="images/fl-front-m.jpg 1000w, images/fl-front.jpg 2000w" sizes="100vw" alt="Charcoal cabin with a deep front porch among ponderosa pines" loading="lazy"></div><figcaption>The porch · Forest Highlands</figcaption></figure>
       <figure class="f2" data-reveal data-parallax="-0.1"><img src="images/fl-porch-m.jpg" alt="Porch with wicker chairs looking into the trees" loading="lazy"></figure>
       <figure class="f3" data-reveal data-parallax="0.08"><img src="images/fl-bedroom-m.jpg" alt="Bedroom with wood beams and striped blankets" loading="lazy"></figure>
       <figure class="f4" data-reveal data-parallax="-0.05"><img src="images/fl-kitchen-m.jpg" alt="Kitchen with sage cabinets and wood ceiling" loading="lazy"></figure>
@@ -89,12 +94,12 @@
   <!-- ======================= PROJECT 03 ======================= -->
   <section class="project" id="p3">
     <header class="project-head" data-reveal>
-      <span class="project-n">03</span>
-      <h2>Paradise Valley</h2>
-      <p>Whole-house remodel. White stucco, low roofline, oak and sage inside.</p>
+      <div class="ph-meta label"><span class="ph-n">03 / 06</span><span>Paradise Valley</span><span>Whole-house remodel</span></div>
+      <h2 class="ph-title" data-mask>Paradise Valley</h2>
+      <p class="ph-note">White stucco, low roofline, oak and sage inside.</p>
     </header>
     <div class="spread spread-c">
-      <figure class="f1" data-reveal data-parallax="0.04"><img src="images/pv-house.jpg" srcset="images/pv-house-m.jpg 1000w, images/pv-house.jpg 2000w" sizes="(max-width: 800px) 100vw, 64vw" alt="White stucco house with a brick patio under a tree" loading="lazy"></figure>
+      <figure class="has-cap f1" data-reveal data-parallax="0.04"><div class="frame"><img src="images/pv-house.jpg" srcset="images/pv-house-m.jpg 1000w, images/pv-house.jpg 2000w" sizes="(max-width: 800px) 100vw, 64vw" alt="White stucco house with a brick patio under a tree" loading="lazy"></div><figcaption>Back patio · under the tree</figcaption></figure>
       <figure class="f2" data-reveal data-parallax="-0.09"><img src="images/pv-court-m.jpg" alt="Front courtyard with brick path and arched entry" loading="lazy"></figure>
       <figure class="f3" data-reveal data-parallax="0.1"><img src="images/pv-dining-m.jpg" alt="Dining room with white beamed ceiling and oak table" loading="lazy"></figure>
       <figure class="f4" data-reveal data-parallax="-0.03"><img src="images/pv-study-m.jpg" alt="Sage green study with built-in shelves" loading="lazy"></figure>
@@ -104,13 +109,13 @@
   <!-- ======================= PROJECT 04 ======================= -->
   <section class="project" id="p4">
     <header class="project-head" data-reveal>
-      <span class="project-n">04</span>
-      <h2>Headquarters</h2>
-      <p>Historic remodel. The Boardroom itself, where every house starts on a wall of pins.</p>
+      <div class="ph-meta label"><span class="ph-n">04 / 06</span><span>Phoenix</span><span>Historic remodel</span></div>
+      <h2 class="ph-title" data-mask>Headquarters</h2>
+      <p class="ph-note">The Boardroom itself, where every house starts on a wall of pins.</p>
     </header>
     <div class="spread spread-d">
       <figure class="f1" data-reveal data-parallax="-0.06"><img src="images/hq-board-m.jpg" alt="Pin board covered in plans, fabric, and photographs" loading="lazy"></figure>
-      <figure class="f2" data-reveal data-parallax="0.05"><img src="images/hq-pots.jpg" srcset="images/hq-pots-m.jpg 1000w, images/hq-pots.jpg 2000w" sizes="(max-width: 800px) 100vw, 58vw" alt="Copper pots on a brass rail over white subway tile" loading="lazy"></figure>
+      <figure class="has-cap f2" data-reveal data-parallax="0.05"><div class="frame"><img src="images/hq-pots.jpg" srcset="images/hq-pots-m.jpg 1000w, images/hq-pots.jpg 2000w" sizes="(max-width: 800px) 100vw, 58vw" alt="Copper pots on a brass rail over white subway tile" loading="lazy"></div><figcaption>The kitchen · copper on brass</figcaption></figure>
       <figure class="f3" data-reveal data-parallax="0.11"><img src="images/hq-desk-m.jpg" alt="Lindsey at a drafting desk by a window" loading="lazy"></figure>
       <figure class="f4" data-reveal data-parallax="-0.04"><img src="images/hq-front-m.jpg" alt="White brick house with red tile roof and lawn" loading="lazy"></figure>
     </div>
@@ -119,12 +124,12 @@
   <!-- ======================= PROJECT 05 ======================= -->
   <section class="project" id="p5">
     <header class="project-head" data-reveal>
-      <span class="project-n">05</span>
-      <h2>Home Sweet Home</h2>
-      <p>Our own house and pool house. The one we test everything on first.</p>
+      <div class="ph-meta label"><span class="ph-n">05 / 06</span><span>North Central Phoenix</span><span>Remodel and pool house</span></div>
+      <h2 class="ph-title" data-mask>Home Sweet Home</h2>
+      <p class="ph-note">Our own house. The one we test everything on first.</p>
     </header>
     <div class="spread spread-b">
-      <figure class="f1" data-reveal data-parallax="0.05"><img src="images/hs-house.jpg" srcset="images/hs-house-m.jpg 1000w, images/hs-house.jpg 2000w" sizes="100vw" alt="White board-and-batten ranch with navy shutters and a brick path" loading="lazy"></figure>
+      <figure class="has-cap f1" data-reveal data-parallax="0.05"><div class="frame"><img src="images/hs-house.jpg" srcset="images/hs-house-m.jpg 1000w, images/hs-house.jpg 2000w" sizes="100vw" alt="White board-and-batten ranch with navy shutters and a brick path" loading="lazy"></div><figcaption>The front walk · navy shutters</figcaption></figure>
       <figure class="f2" data-reveal data-parallax="-0.1"><img src="images/hs-pergola-m.jpg" alt="Picnic table under a vine-covered pergola" loading="lazy"></figure>
       <figure class="f3" data-reveal data-parallax="0.08"><img src="images/hs-bunks-m.jpg" alt="Pool house bunk room with blue-gray built-ins" loading="lazy"></figure>
       <figure class="f4" data-reveal data-parallax="-0.05"><img src="images/hs-pool-m.jpg" alt="Pool and lawn behind the house" loading="lazy"></figure>
@@ -134,12 +139,12 @@
   <!-- ======================= PROJECT 06 ======================= -->
   <section class="project" id="p6">
     <header class="project-head" data-reveal>
-      <span class="project-n">06</span>
-      <h2>Arcadia</h2>
-      <p>Two pool houses and a porch. Small buildings, done properly.</p>
+      <div class="ph-meta label"><span class="ph-n">06 / 06</span><span>Arcadia</span><span>Two pool houses and a porch</span></div>
+      <h2 class="ph-title" data-mask>Arcadia</h2>
+      <p class="ph-note">Small buildings, done properly.</p>
     </header>
     <div class="spread spread-c">
-      <figure class="f1" data-reveal data-parallax="0.04"><img src="images/ad-house.jpg" srcset="images/ad-house-m.jpg 1000w, images/ad-house.jpg 2000w" sizes="(max-width: 800px) 100vw, 64vw" alt="White pool house with black steel doors beside a pool" loading="lazy"></figure>
+      <figure class="has-cap f1" data-reveal data-parallax="0.04"><div class="frame"><img src="images/ad-house.jpg" srcset="images/ad-house-m.jpg 1000w, images/ad-house.jpg 2000w" sizes="(max-width: 800px) 100vw, 64vw" alt="White pool house with black steel doors beside a pool" loading="lazy"></div><figcaption>Pool house · black steel doors</figcaption></figure>
       <figure class="f2" data-reveal data-parallax="-0.09"><img src="images/ad-bath-m.jpg" alt="Pool house bath with slate floor and black hardware" loading="lazy"></figure>
       <figure class="f3" data-reveal data-parallax="0.1"><img src="images/pa-house-m.jpg" alt="Pool house with a white trellis and brick patio" loading="lazy"></figure>
       <figure class="f4" data-reveal data-parallax="-0.03"><img src="images/pa-vanity-m.jpg" alt="Sage green vanity with brass fittings" loading="lazy"></figure>
@@ -178,11 +183,9 @@
   <section class="contact" id="contact">
     <img class="contact-logo" src="logo/lockup-white.png" alt="Boardroom Projects" width="1800" height="699" data-reveal>
     <p class="contact-line" data-reveal>Have a house in mind? The older and stranger, the better.</p>
-    <div class="contact-grid" data-reveal>
-      <a href="mailto:lindsey@boardroomprojects.com">lindsey@boardroomprojects.com</a>
-    </div>
+    <a class="contact-cta" href="mailto:lindsey@boardroomprojects.com" data-reveal>lindsey@boardroomprojects.com</a>
     <p class="contact-giving" data-reveal>Ten percent of every Boardroom project goes to a fund supporting local affordable housing organizations, so that more people in this city have a place to call home.</p>
-    <div class="contact-foot">
+    <div class="contact-foot label">
       <a href="https://www.instagram.com/boardroomprojects/" rel="noopener">Instagram</a>
       <span>© <span id="year"></span> Boardroom Projects</span>
       <a href="#top" class="totop">Back to the top</a>
@@ -190,6 +193,8 @@
   </section>
 
 </main>
+
+<div class="grain" aria-hidden="true"></div>
 
 <!-- ======================= THE HOUSE THAT BUILDS ITSELF ======================= -->
 <div class="builder" id="builder" aria-hidden="true">
@@ -235,6 +240,6 @@
   <span class="builder-label"><span id="builderStage">Site</span></span>
 </div>
 
-<script src="main.js?v=20261021c" defer></script>
+<script src="main.js?v=20261102" defer></script>
 </body>
 </html>

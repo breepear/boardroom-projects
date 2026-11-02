@@ -1,9 +1,10 @@
 /* Boardroom Projects — scroll choreography
-   1. Reveal + split-word reveal
-   2. Parallax figures
-   3. Hero scale/veil
-   4. Horizontal strip tied to vertical scroll
-   5. The house in the corner that builds itself with page progress
+   1. Font gate for the hero entrance
+   2. Reveal, split-word reveal, masked title rise
+   3. Parallax figures
+   4. Hero scale on scroll
+   5. Horizontal strip tied to vertical scroll
+   6. The house in the corner that builds itself with page progress
 */
 (function () {
   'use strict';
@@ -11,14 +12,18 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const root = document.documentElement;
 
   $('#year').textContent = String(new Date().getFullYear());
 
+  /* ---------- fonts gate: hero type starts once fonts are in, never later than 1.5s ---------- */
+  const fontsReady = () => root.classList.add('fonts-ready');
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fontsReady);
+  setTimeout(fontsReady, 1500);
+
   /* ---------- split words ---------- */
   $$('[data-split]').forEach(el => {
-    const html = el.innerHTML.trim();
-    // keep <em> wrappers, split on spaces
-    const tmp = document.createElement('div'); tmp.innerHTML = html;
+    const tmp = document.createElement('div'); tmp.innerHTML = el.innerHTML.trim();
     let i = 0;
     const walk = (node) => {
       Array.from(node.childNodes).forEach(n => {
@@ -39,12 +44,19 @@
     el.innerHTML = tmp.innerHTML;
   });
 
+  /* ---------- masked title rise ---------- */
+  $$('[data-mask]').forEach(el => {
+    const inner = document.createElement('span'); inner.textContent = el.textContent;
+    const mask = document.createElement('span'); mask.className = 'ml'; mask.appendChild(inner);
+    el.textContent = ''; el.appendChild(mask);
+  });
+
   /* ---------- reveal ---------- */
   const reveals = $$('[data-reveal]');
   if (reduce || !('IntersectionObserver' in window)) reveals.forEach(el => el.classList.add('in'));
   else {
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
     reveals.forEach(el => io.observe(el));
   }
 
@@ -68,10 +80,9 @@
   }
 
   /* ---------- scroll-driven state ---------- */
-  const heroImg = $('.hero-img');
-  const heroLogo = $('.hero-logo');
-  const heroVeil = $('.hero-veil');
   const hero = $('.hero');
+  const heroMedia = $('.hero-media');
+  const heroLogo = $('.hero-logo');
   const stripWrap = $('#strip');
   const stripTrack = $('#stripTrack');
   const stripCount = $('#stripCount');
@@ -80,7 +91,7 @@
   const contact = $('#contact');
 
   let vh = window.innerHeight, docH = 1, ticking = false;
-  function measure() { vh = window.innerHeight; docH = Math.max(1, document.documentElement.scrollHeight - vh); }
+  function measure() { vh = window.innerHeight; docH = Math.max(1, root.scrollHeight - vh); }
   measure();
 
   function frame() {
@@ -88,19 +99,18 @@
     const y = window.scrollY;
     const p = clamp(y / docH, 0, 1);
 
-    // hero: scale image and drift logo as you leave
+    // hero: the media plane scales and sinks as you leave; the lockup drifts up and fades
     const hp = clamp(y / (hero.offsetHeight || vh), 0, 1);
     if (!reduce) {
-      heroImg.style.transform = `scale(${1.06 + hp * 0.14}) translateY(${hp * 6}%)`;
-      heroLogo.style.transform = `translateY(${hp * -18}%)`;
-      heroLogo.style.opacity = String(1 - clamp((hp - 0.35) / 0.4, 0, 1));
-      heroVeil.style.opacity = String(1 + hp * 0.8);
+      heroMedia.style.transform = `scale(${1 + hp * 0.12}) translateY(${hp * 6}%)`;
+      heroLogo.style.transform = `translateY(${hp * -16}%)`;
+      heroLogo.style.opacity = String(1 - clamp((hp - 0.3) / 0.4, 0, 1));
     }
 
     // strip: sticky section, progress across its wrapper
     const sr = stripWrap.getBoundingClientRect();
-    const sp = clamp(-sr.top / (sr.height - vh), 0, 1);
-    const maxX = Math.max(0, stripTrack.scrollWidth - window.innerWidth + 0);
+    const sp = clamp(-sr.top / Math.max(1, sr.height - vh), 0, 1);
+    const maxX = Math.max(0, stripTrack.scrollWidth - window.innerWidth);
     if (!reduce) stripTrack.style.transform = `translate3d(${-sp * maxX}px,0,0)`;
     const idx = Math.min(stripN, Math.floor(sp * (stripN - 1) + 1 + 0.0001));
     stripCount.textContent = `${String(idx).padStart(2, '0')} / ${String(stripN).padStart(2, '0')}`;
@@ -120,8 +130,7 @@
     if (!reduce) {
       for (const path of paths) {
         const s = parseFloat(path.dataset.s), e = parseFloat(path.dataset.e);
-        const t = clamp((p - s) / (e - s), 0, 1);
-        path.style.strokeDashoffset = String(1 - t);
+        path.style.strokeDashoffset = String(1 - clamp((p - s) / (e - s), 0, 1));
       }
     }
     setStage(p);
@@ -135,7 +144,6 @@
   window.addEventListener('scroll', req, { passive: true });
   window.addEventListener('resize', () => { measure(); req(); });
   window.addEventListener('load', () => { measure(); req(); });
-  // fonts and images shift layout; re-measure a few times early on
   [300, 1200, 3000].forEach(ms => setTimeout(() => { measure(); req(); }, ms));
   frame();
 })();
